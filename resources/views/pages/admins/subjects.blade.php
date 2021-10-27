@@ -8,15 +8,15 @@
 	
     @include('component.sidebar')
     @include('component.info_msg')
-    @include('items.create-teachers')
+    @include('items.create-subjects')
     <div class="dashboard-content">
         <div class="text">
             <div class="container-fluid">
                 <div class="row p-3">
-                    <h1 class="fw-light" id="dashusers"><i class="fad fa-chalkboard-teacher"></i> Teacher list</h1>
+                    <h1 class="fw-light" id="dashusers"><i class="fad fa-books"></i> Subject list</h1>
                     <div class="mb-3">
-                        <button class="btn btn-outline-primary float-end px-3" data-backdrop="static" data-toggle="modal" data-target="#createTeacherModal">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i> New Teacher
+                        <button class="btn btn-outline-primary float-end px-3" data-backdrop="static" data-toggle="modal" data-target="#createSubjectModal">
+                            <i class="fad fa-books"></i><i class="fal fa-plus"  style="margin-left: -2px; font-size:0.8em;"></i> New Subject
                         </button>
                     </div>
                     <div class="col-md-12 offset-md-0 mb-5 p-5 card-table">
@@ -24,35 +24,31 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Last Name</th>
-                                    <th>First Name</th>
-                                    <th>Subject Teaching</th>
-                                    <th>Contact No.</th>
+                                    <th>Subject Name</th>
+                                    <th>Subject Description</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($teachers as $teacher)
+                                @foreach($subjects as $subject)
                                 <tr class="data-row">
-                                    <td>{{$teacher->id}}</td>
-                                    <td class="lname">{{$teacher->lastName}}</td>
-                                    <td class="fname">{{$teacher->firstName}}</td>
-                                    <td class="subj">{{$teacher->subj_teaching}}</td>
-                                    <td class="contact">{{$teacher->contactNo}}</td>
+                                    <td>{{$subject->id}}</td>
+                                    <td class="subjname">{{$subject->subjectName}}</td>
+                                    <td class="subjdesc">{{$subject->subjectDescription}}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-outline-primary tooltip-actbtn" href="{{route('admin.students.view', ['student' => "$teacher->id"])}}"><i class="far fa-eye"></i>
+                                        <a class="btn btn-outline-primary tooltip-actbtn" href="{{route('admin.students.view', ['student' => "$subject->id"])}}"><i class="far fa-eye"></i>
                                             <div class="top">
                                                 <p class="tooltiptxt">View</p>
                                             </div>
                                         </a>
                                         
-                                        <div class="btn btn-outline-success tooltip-actbtn" id="edit-teacher" data-teacher-id="{{$teacher->id}}"><i class="fas fa-pencil-alt"></i>
+                                        <div class="btn btn-outline-success tooltip-actbtn" id="edit-subject" data-subject-id="{{$subject->id}}"><i class="fas fa-pencil-alt"></i>
                                             <div class="top">
                                                 <p class="tooltiptxt">Edit</p>
                                             </div>
                                         </div>
 
-                                        <div class="btn btn-outline-danger tooltip-actbtn"  id="delete-teacher" data-teacher-id="{{$teacher->id}}"><i class="fal fa-user-times"></i>
+                                        <div class="btn btn-outline-danger tooltip-actbtn"  id="delete-subject" data-subject-id="{{$subject->id}}"><i class="fal fa-user-times"></i>
                                             <div class="top">
                                                 <p class="tooltiptxt">Delete</p>
                                             </div>
@@ -65,10 +61,8 @@
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Last Name</th>
-                                    <th>First Name</th>
-                                    <th>Subject Teaching</th>
-                                    <th>Contact No.</th>
+                                    <th>Subject Name</th>
+                                    <th>Subject Description</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
@@ -78,8 +72,8 @@
             </div>
         </div>
     </div>
-    @include('items.edit-teachers')
-    @include('items.delete-teachers')
+    @include('items.edit-subjects')
+    @include('items.delete-subjects')
 
     <script>
         let btn = document.querySelector("#btn-menu");

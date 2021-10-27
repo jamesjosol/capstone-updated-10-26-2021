@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -294,5 +295,52 @@ class AdminController extends Controller
 
         return redirect()->route('admin.teachers')->with('Message', "Teacher [#ID$id] has been successfully deleted.");
     }
-    
+
+
+    public function showSubjects() {
+        $subjects = Subject::orderBy('subjectName')->get();
+        return view('pages.admins.subjects', compact('subjects'));
+    }
+
+    public function storeSubject(Request $request) {
+        $request->validate([
+            'subjectName'             => 'required|string',
+            'subjectDescription'      => 'required|string',
+        ]);
+
+        $subject = Subject::create([
+            'subjectName'         => $request->subjectName,
+            'subjectDescription'  => $request->subjectDescription,
+        ]);
+
+        return redirect()->route('admin.subjects')->with('Message', "Subject ($subject->subjectName) has been successfully created.");
+    }
+
+
+    public function updateSubject(Request $request) {
+        $request->validate([
+            'id'                      => 'required|numeric',
+            'subjectName'             => 'required|string',
+            'subjectDescription'      => 'required|string',
+        ]);
+
+        $subject = Subject::find($request->id);
+
+        $subject->update($request->all());
+
+        return redirect()->route('admin.subjects')->with('Message', "Subject [#ID$request->id] has been successfully updated.");
+    }
+
+    public function deleteSubject(Request $request) {
+        $subject = Subject::find($request->id);
+        $id = $request->id;
+        $subject->delete();
+
+        return redirect()->route('admin.subjects')->with('Message', "Subject [#ID$id] has been successfully deleted.");
+    }
+
+    // public function showSections() {
+    //     $teachers = Section::orderBy('level_id')->get();
+    //     return view('pages.admins.teachers', compact('teachers'));
+    // }
 }

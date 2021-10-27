@@ -55,6 +55,22 @@
         </li>
 
         <li>
+            <a href="{{ route('admin.subjects') }}" class="{{ Request::is('admin/subjects') ? 'active' : '' }}">
+                <i class="fal fa-books"></i>
+                <span class="links-name">Subjects</span>
+            </a>
+            <span class="tooltip">Subjects</span>
+        </li>
+
+        <li>
+            <a href="">
+                <i class="fal fa-school"></i>
+                <span class="links-name">Class Section</span>
+            </a>
+            <span class="tooltip">Class Section</span>
+        </li>
+
+        <li>
             <a href="">
                 <i class='bx bx-home'></i>
                 <span class="links-name">Home</span>

@@ -13,7 +13,7 @@
         <div class="text">
             <div class="container-fluid">
                 <div class="row p-3">
-                    <h1 class="fw-light" id="dashusers"><i class="fad fa-chalkboard-teacher"></i> Teacher list</h1>
+                    <h1 class="fw-light" id="dashusers"><i class="fal fa-chalkboard-teacher"></i> Teacher list</h1>
                     <div class="mb-3">
                         <button class="btn btn-outline-primary float-end px-3" data-backdrop="static" data-toggle="modal" data-target="#createTeacherModal">
                             <i class="fa fa-user-plus" aria-hidden="true"></i> New Teacher
@@ -23,12 +23,10 @@
                         <table id="example" class="table table-striped table-hover table-bordered">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Last Name</th>
-                                    <th>First Name</th>
-                                    <th>Subject Teaching</th>
-                                    <th>Contact No.</th>
-                                    <th>Action</th>
+                                    <th>Room</th>
+                                    <th>Section Name</th>
+                                    <th>Adviser</th>
+                                    <th>Grade Level</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,12 +62,10 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Last Name</th>
-                                    <th>First Name</th>
-                                    <th>Subject Teaching</th>
-                                    <th>Contact No.</th>
-                                    <th>Action</th>
+                                    <th>Room</th>
+                                    <th>Section Name</th>
+                                    <th>Adviser</th>
+                                    <th>Grade Level</th>
                                 </tr>
                             </tfoot>
                         </table>

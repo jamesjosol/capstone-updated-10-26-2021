@@ -58,11 +58,12 @@ class User extends Authenticatable
 
 
     public static function usersNotStudent() {
-        $users = User::doesntHave('student')->get();
+        $users = User::doesntHave('student')->where('role', '2')->orderBy('lastName')->get();
         $list = [];
         foreach($users as $u) {
-            $role = $u->role == 1 ? 'Administrator' : 'Normal';
-            $list[$u->id] = $u->lastName . ", " . $u->firstName . "     ($role)";
+            // $role = $u->role == 1 ? 'Administrator' : 'Normal';
+            // $list[$u->id] = $u->lastName . ", " . $u->firstName . "     ($role)";
+            $list[$u->id] = $u->lastName . ", " . $u->firstName;
         }
         return $list;
     }

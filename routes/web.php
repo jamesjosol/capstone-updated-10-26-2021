@@ -77,6 +77,14 @@ Route::group(['middleware'=>'auth'], function() {
         Route::patch('teachers', [AdminController::class, 'updateTeacher'])->name('admin.teachers');
         Route::delete('teachers', [AdminController::class, 'deleteTeacher'])->name('admin.teachers');
 
+        Route::get('subjects', [AdminController::class, 'showSubjects'])->name('admin.subjects');
+        Route::post('subjects', [AdminController::class, 'storeSubject'])->name('admin.subjects');
+        Route::patch('subjects', [AdminController::class, 'updateSubject'])->name('admin.subjects');
+        Route::delete('subjects', [AdminController::class, 'deleteSubject'])->name('admin.subjects');
+
+        Route::get('sections', [AdminController::class, 'showSections'])->name('admin.sections');
+
+
     });
     
     Route::group(['prefix'=>'user', 'middleware'=>'isUser'], function () {
