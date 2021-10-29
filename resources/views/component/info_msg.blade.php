@@ -26,13 +26,26 @@
 @if($message = Session::get('Message'))
 
 <script>
-    $(document).ready(function(){
-       $("#success_msg_modal").modal("show"); 
-    });
+
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true,
+        // "positionClass": "toast-bottom-right",
+    }
+    toastr.success("{{ session('Message') }}", "", {"iconClass": 'custom-success'});
+
+    // $(document).ready(function(){
+    //    $("#success_msg_modal").modal("show"); 
+    // });
+
+    // $(document).ready(function(){
+    //    $("#success_msg_modal").modal("show"); 
+    // });
     
-    setTimeout(function(){
-       $("#success_msg_modal").modal("hide")
-    }, 3000);
+    // setTimeout(function(){
+    //    $("#success_msg_modal").modal("hide")
+    // }, 3000);
  </script>
  
 <div class="modal fade bd-example-modal-sm" id="success_msg_modal" tabindex="-1" role="dialog" aria-labelledby="success_reg_modal" aria-hidden="true">

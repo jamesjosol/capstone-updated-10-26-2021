@@ -10,4 +10,17 @@ class Level extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function sections() {
+        return $this->hasMany('App\Models\Section');
+    }
+
+    public function list() {
+        $levels = Level::all();
+        $list = [];
+        foreach($levels as $l) {
+            $list[$l->id] = $l->level;
+        }
+        return $list;
+    }
 }

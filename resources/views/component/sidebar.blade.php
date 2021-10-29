@@ -23,7 +23,7 @@
         </li>
 
         <li>
-            <a href="{{ route('admin.dashboard') }}" class="{{ Request::is('admin/dashboard') ? 'active' : '' }}">
+            <a href="{{ route('admin.dashboard') }}" class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
                 <i class='bx bx-grid-alt'></i>
                 <span class="links-name">Dashboard</span>
             </a>
@@ -31,7 +31,7 @@
         </li>
 
         <li>
-            <a href="{{ route('admin.users') }}" class="{{ Request::is('admin/users') ? 'active' : '' }}">
+            <a href="{{ route('admin.users') }}" class="{{ request()->is('admin/users') ? 'active' : '' }}">
                 <i class='fal fa-users'></i>
                 <span class="links-name">Users</span>
             </a>
@@ -39,7 +39,7 @@
         </li>
 
         <li>
-            <a href="{{ route('admin.students') }}" class="{{ Request::is('admin/students') ? 'active' : '' }}">
+            <a href="{{ route('admin.students') }}" class="{{ request()->is('admin/students') ? 'active' : '' }}">
                 <i class="fal fa-user-graduate"></i>
                 <span class="links-name">Students</span>
             </a>
@@ -47,7 +47,7 @@
         </li>
 
         <li>
-            <a href="{{ route('admin.teachers') }}" class="{{ Request::is('admin/teachers') ? 'active' : '' }}">
+            <a href="{{ route('admin.teachers') }}" class="{{ request()->is('admin/teachers') ? 'active' : '' }}">
                 <i class="fal fa-chalkboard-teacher"></i>
                 <span class="links-name">Teachers</span>
             </a>
@@ -55,7 +55,7 @@
         </li>
 
         <li>
-            <a href="{{ route('admin.subjects') }}" class="{{ Request::is('admin/subjects') ? 'active' : '' }}">
+            <a href="{{ route('admin.subjects') }}" class="{{ request()->is('admin/subjects') ? 'active' : '' }}">
                 <i class="fal fa-books"></i>
                 <span class="links-name">Subjects</span>
             </a>
@@ -63,11 +63,19 @@
         </li>
 
         <li>
-            <a href="">
+            <a href="{{ route('admin.sections') }}" class="{{ request()->is('admin/sections') ? 'active' : '' }}">
                 <i class="fal fa-school"></i>
-                <span class="links-name">Class Section</span>
+                <span class="links-name">Class Sections</span>
             </a>
-            <span class="tooltip">Class Section</span>
+            <span class="tooltip">Class Sections</span>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.classes') }}" class="{{ request()->is('admin/classes') ? 'active' : '' }}">
+                <i class="fal fa-book-reader"></i>
+                <span class="links-name">Classes</span>
+            </a>
+            <span class="tooltip">Classes</span>
         </li>
 
         <li>
@@ -77,14 +85,7 @@
             </a>
             <span class="tooltip">Home</span>
         </li>
-
-        <li>
-            <a href="">
-                <i class='bx bx-info-circle'></i>
-                <span class="links-name">About</span>
-            </a>
-            <span class="tooltip">About</span>
-        </li>
+        
 
         {{-- <li class="logout-content fixed-bottom">
             <a href="">

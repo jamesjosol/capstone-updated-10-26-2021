@@ -10,4 +10,17 @@ class Subject extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function sessions() {
+        return $this->hasMany('App\Models\Session');
+    }
+
+    public function list() {
+        $subjects = Subject::all();
+        $list = [];
+        foreach($subjects as $s) {
+            $list[$s->id] = $s->subjectName;
+        }
+        return $list;
+    }
 }

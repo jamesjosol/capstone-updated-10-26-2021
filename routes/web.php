@@ -83,7 +83,14 @@ Route::group(['middleware'=>'auth'], function() {
         Route::delete('subjects', [AdminController::class, 'deleteSubject'])->name('admin.subjects');
 
         Route::get('sections', [AdminController::class, 'showSections'])->name('admin.sections');
+        Route::post('sections', [AdminController::class, 'storeSection'])->name('admin.sections');
+        Route::patch('sections', [AdminController::class, 'updateSection'])->name('admin.sections');
+        Route::delete('sections', [AdminController::class, 'deleteSection'])->name('admin.sections');
 
+        Route::get('classes', [AdminController::class, 'showClasses'])->name('admin.classes');
+        Route::post('classes', [AdminController::class, 'storeClass'])->name('admin.classes');
+        Route::patch('classes', [AdminController::class, 'updateClass'])->name('admin.classes');
+        Route::delete('classes', [AdminController::class, 'deleteClass'])->name('admin.classes');
 
     });
     

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Section;
+use App\Models\Session;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Teacher;
@@ -339,8 +341,99 @@ class AdminController extends Controller
         return redirect()->route('admin.subjects')->with('Message', "Subject [#ID$id] has been successfully deleted.");
     }
 
-    // public function showSections() {
-    //     $teachers = Section::orderBy('level_id')->get();
-    //     return view('pages.admins.teachers', compact('teachers'));
-    // }
+    public function showSections() {
+        $sections = Section::get();
+        return view('pages.admins.sections', compact('sections'));
+    }
+
+    public function storeSection(Request $request) {
+        $request->validate([
+            'name'          => 'required|string',
+            'room'          => 'required|string',
+            'teacher_id'    => 'required|numeric',
+            'level_id'      => 'required|numeric',
+        ]);
+
+        $section = Section::create([
+            'name'          => $request->name,
+            'room'          => $request->room,
+            'teacher_id'    => $request->teacher_id,
+            'level_id'      => $request->level_id
+        ]);
+
+        return redirect()->route('admin.sections')->with('Message', "Section ($section->name) has been successfully created.");
+    }
+
+
+    public function updateSection(Request $request) {
+        $request->validate([
+            'id'            => 'required|numeric',
+            'name'          => 'required|string',
+            'room'          => 'required|string',
+            'teacher_id'    => 'required|numeric',
+            'level_id'      => 'required|numeric',
+        ]);
+
+        $section = Section::find($request->id);
+
+        $section->update($request->all());
+
+        return redirect()->route('admin.sections')->with('Message', "Section ($section->name) has been successfully updated.");
+    }
+
+    public function deleteSection(Request $request) {
+        $section = Section::find($request->id);
+        $name = $section->name;
+        $section->delete();
+
+        return redirect()->route('admin.sections')->with('Message', "Section ($name) has been successfully deleted.");
+    }
+
+    public function showClasses() {
+        $classes = Session::get();
+        return view('pages.admins.classes', compact('classes'));
+    }
+
+    public function storeClass(Request $request) {
+        $request->validate([
+            'teacher_id'    => 'required|numeric',
+            'subject_id'    => 'required|numeric',
+            'schedule'      => 'required|string',
+            'time'          => 'required|string',
+           
+        ]);
+
+        $class = Session::create([
+            'teacher_id'    => $request->teacher_id,
+            'subject_id'    => $request->subject_id,
+            'schedDay'      => $request->schedule,
+            'schedTime'     => $request->time,
+        ]);
+
+        return redirect()->route('admin.classes')->with('Message', "Class has been successfully created.");
+    }
+
+    public function updateClass(Request $request) {
+        $request->validate([
+            'id'            => 'required|numeric',
+            'teacher_id'    => 'required|numeric',
+            'subject_id'    => 'required|numeric',
+            'schedDay'      => 'required|string',
+            'schedTime'     => 'required|string',
+        ]);
+
+        $class = Session::find($request->id);
+
+        $class->update($request->all());
+
+        return redirect()->route('admin.classes')->with('Message', "Class [#ID$request->id] has been successfully updated.");
+    }
+
+    public function deleteClass(Request $request) {
+        $class = Session::find($request->id);
+        $id = $request->id;
+        $class->delete();
+
+        return redirect()->route('admin.classes')->with('Message', "Section [#ID$id] has been successfully deleted.");
+    }
 }
