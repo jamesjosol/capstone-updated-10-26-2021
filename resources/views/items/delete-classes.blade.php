@@ -45,6 +45,14 @@
             var day = row.children(".schedDay").val();
             var time = row.children(".schedTime").val();
 
+            var prevrow = el.parents('tr')
+            // check if is responsive
+            if(prevrow.hasClass('child')) {
+                var subject = prevrow.prev().children(".subjname").text();
+                var day = prevrow.prev().children(".schedDay").val();
+                var time = prevrow.prev().children(".schedTime").val();
+            }
+
             const timearr = time.split(":");
 
             let hours = timearr[0];

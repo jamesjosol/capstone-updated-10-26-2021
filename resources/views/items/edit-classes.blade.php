@@ -71,6 +71,15 @@
             var day = row.children(".schedDay").val();
             var time = row.children(".schedTime").val();
 
+            var prevrow = el.parents('tr')
+            // check if is responsive
+            if(prevrow.hasClass('child')) {
+                var teacher = prevrow.prev().children(".teacher").val();
+                var subject = prevrow.prev().children(".subject").val();
+                var day = prevrow.prev().children(".schedDay").val();
+                var time = prevrow.prev().children(".schedTime").val();
+            }
+            
             $("#modal-input-id").val(id);
             $("#modal-input-teacher").val(teacher);
             $("#modal-input-subject").val(subject);

@@ -20,7 +20,7 @@
                         </button>
                     </div>
                     <div class="col-md-12 offset-md-0 mb-5 p-5 card-table">
-                        <table id="example" class="table table-striped table-hover table-bordered">
+                        <table id="example" class="table table-striped table-hover table-bordered display nowrap" cellspacing="0" width="100%";>
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -35,7 +35,7 @@
                             <tbody>
                                 @foreach($users as $user)
                                 <tr class="data-row">
-                                    <input type="hidden" name="" class="fname" value="{{$user->lastName}}">
+                                    <input type="hidden" name="" id="fname" class="fname" value="{{$user->lastName}}">
                                     <input type="hidden" name="" class="lname" value="{{$user->firstName}}">
                                     <input type="hidden" name="" class="mname" value="{{$user->middleName}}">
                                     <td>{{$user->id}}</td>

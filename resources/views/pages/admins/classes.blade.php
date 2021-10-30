@@ -20,7 +20,7 @@
                         </button>
                     </div>
                     <div class="col-md-12 offset-md-0 mb-5 p-5 card-table">
-                        <table id="example" class="table table-striped table-hover table-bordered">
+                        <table id="example" class="table table-striped table-hover table-bordered display nowrap" cellspacing="0" width="100%";>
                             <thead>
                                 <tr>
                                     <th>ID</th>

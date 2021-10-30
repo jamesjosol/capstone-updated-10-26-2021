@@ -43,6 +43,12 @@
             var id = el.data('subject-id');
             var row = el.closest(".data-row");
             var subjname = row.children(".subjname").text();
+
+            var prevrow = el.parents('tr')
+            // check if is responsive
+            if(prevrow.hasClass('child')) {
+                var subjname = prevrow.prev().children(".subjname").text();
+            }
     
 
             $("#subject-name").text('ID#'+id + ' - ' + subjname);

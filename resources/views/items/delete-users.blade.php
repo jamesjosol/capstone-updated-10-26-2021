@@ -44,6 +44,12 @@
             var row = el.closest(".data-row");
             var name = row.children(".username").text();
 
+            var prevrow = el.parents('tr')
+            // check if is responsive
+            if(prevrow.hasClass('child')) {
+                var name = prevrow.prev().children(".username").text();
+            }
+
             $("#user-name").text('ID#'+id + ' - ' + name);
             $("#delete-user-id").val(id);
         })

@@ -71,6 +71,15 @@
             var teacher = row.children(".teacher").val();
             var level = row.children(".level").val();
 
+            var prevrow = el.parents('tr')
+            // check if is responsive
+            if(prevrow.hasClass('child')) {
+                var section = prevrow.prev().children(".section").text();
+                var room = prevrow.prev().children(".room").text();
+                var teacher = prevrow.prev().children(".teacher").val();
+                var level = prevrow.prev().children(".level").val();
+            }
+
             $("#modal-input-id").val(id);
             $("#modal-input-section").val(section);
             $("#modal-input-room").val(room);

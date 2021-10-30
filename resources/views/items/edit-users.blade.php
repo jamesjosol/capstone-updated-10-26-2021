@@ -79,7 +79,7 @@
 
         // on modal show
         $('#edit-modal').on('show.bs.modal', function() {
-            var el = $(".edit-user-trigger-clicked"); 
+            var el = $(".edit-user-trigger-clicked") 
             var row = el.closest(".data-row");
 
             var id = el.data('user-id');
@@ -90,7 +90,25 @@
             var email = row.children(".email").text();
             var contact = row.children(".contact").text();
             var role = row.children(".role").val();
+            
+            var prevrow = el.parents('tr')
+            console.log('prevrow: ',prevrow.prev())
+            // check if is responsive
+            if(prevrow.hasClass('child')) {
+                var fname = prevrow.prev().children(".fname").val();
+                var lname = prevrow.prev().children(".lname").val();
+                var mname = prevrow.prev().children(".mname").val();
+                var username = prevrow.prev().children(".username").text();
+                var email = prevrow.prev().children(".email").text();
+                var contact = prevrow.prev().children(".contact").text();
+                var role = prevrow.prev().children(".role").val();
+            }
 
+            console.log('row: ', row)
+            
+            console.log(id, fname, lname, role)
+           
+            // alert(fname)
             $("#modal-input-id").val(id);
             $("#modal-input-fname").val(fname);
             $("#modal-input-lname").val(lname);
@@ -106,6 +124,7 @@
             $('.edit-user-trigger-clicked').removeClass('edit-user-trigger-clicked')
             $("#edit-form").trigger("reset");
         })
+       
     })
 </script>
 

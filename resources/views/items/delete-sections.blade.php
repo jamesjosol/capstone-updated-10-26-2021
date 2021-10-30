@@ -42,7 +42,12 @@
             var id = el.data('section-id');
             var row = el.closest(".data-row");
             var section = row.children(".section").text();
-    
+
+            var prevrow = el.parents('tr')
+            // check if is responsive
+            if(prevrow.hasClass('child')) {
+                var section = prevrow.prev().children(".section").text();
+            }
 
             $("#section-name").text(section);
             $("#delete-section-id").val(id);

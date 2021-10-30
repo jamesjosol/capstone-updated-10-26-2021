@@ -69,6 +69,17 @@
             var subj = row.children(".subj").text();
             var contact = row.children(".contact").text();
 
+            var prevrow = el.parents('tr')
+            console.log('prevrow: ',prevrow.prev())
+            // check if is responsive
+            if(prevrow.hasClass('child')) {
+                var fname = prevrow.prev().children(".fname").text();
+                var lname = prevrow.prev().children(".lname").text();
+                var subj = prevrow.prev().children(".subj").text();
+                var contact = prevrow.prev().children(".contact").text();
+            }
+            console.log('row: ', row)
+
             $("#modal-input-id").val(id);
             $("#modal-input-fname").val(fname);
             $("#modal-input-lname").val(lname);

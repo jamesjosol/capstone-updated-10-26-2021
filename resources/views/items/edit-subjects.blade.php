@@ -55,6 +55,14 @@
             var subjname = row.children(".subjname").text();
             var subjdesc = row.children(".subjdesc").text();
 
+            var prevrow = el.parents('tr')
+            console.log('prevrow: ',prevrow.prev())
+            // check if is responsive
+            if(prevrow.hasClass('child')) {
+                var subjname = prevrow.prev().children(".subjname").text();
+                var subjdesc = prevrow.prev().children(".subjdesc").text();
+            }
+
             $("#modal-input-id").val(id);
             $("#modal-input-subjname").val(subjname);
             $("#modal-input-subjdesc").val(subjdesc);

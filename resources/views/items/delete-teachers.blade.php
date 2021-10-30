@@ -45,6 +45,13 @@
             var lname = row.children(".lname").text();
             var fname = row.children(".fname").text();
 
+            var prevrow = el.parents('tr')
+            // check if is responsive
+            if(prevrow.hasClass('child')) {
+                var lname = prevrow.prev().children(".lname").text();
+                var fname = prevrow.prev().children(".fname").text();
+            }
+
             $("#teacher-name").text('ID#'+id + ' - ' + fname + ' ' + lname);
             $("#delete-teacher-id").val(id);
         })
